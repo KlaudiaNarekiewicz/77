@@ -9,7 +9,8 @@ struct wynik{
   	int powtorzen;  	
 };
 
-class Zadanie77{
+class Zadanie77
+{
 	ifstream we1, we2;
 	ofstream wy;
 	string napis1;
@@ -26,7 +27,8 @@ class Zadanie77{
 		string rozszyfrowanie(string, string);
 };
 
-Zadanie77::Zadanie77() {
+Zadanie77::Zadanie77() 
+{
 	we1.open("dokad.txt");
 	we2.open("szyfr.txt");
 	wy.open("Vigenere_wyniki.txt");
@@ -40,7 +42,8 @@ Zadanie77::Zadanie77() {
 	}	
 }
 
-void Zadanie77::zadanie1() {
+void Zadanie77::zadanie1() 
+{
 	cout<<"Zadanie 1: "<<"\n";
 	wy<<"Zadanie 1: "<<"\n";
 	wynik wynik1;
@@ -51,7 +54,8 @@ void Zadanie77::zadanie1() {
 	wy<<wynik1.haslo<<"\n\n";		
 }
 
-void Zadanie77::zadanie2() {
+void Zadanie77::zadanie2() 
+{
 	cout<<"Zadanie 2: "<<"\n";
 	wy<<"Zadanie 2: "<<"\n";
 	string wynik_z2 = this->rozszyfrowanie(napis2, klucz);
@@ -59,7 +63,8 @@ void Zadanie77::zadanie2() {
 	wy<<wynik_z2<<"\n\n";	
 }
 
-void Zadanie77::zadanie3() {
+void Zadanie77::zadanie3() 
+{
 	double suma = 0.00;
 	int n = 0;
 	int t[26];
@@ -67,20 +72,24 @@ void Zadanie77::zadanie3() {
 	cout<<"Zadanie 3: "<<"\n";
 	wy<<"Zadanie 3: "<<"\n";
 	
-	for(int i=0; i<26; i++) {
+	for(int i=0; i<26; i++) 
+	{
 		t[i] = 0;
 	}
-	for(int i=0; i<napis2.length(); i++) {
+	for(int i=0; i<napis2.length(); i++) 
+	{
 		t[int(napis2[i])-65]++;
 	}
-	for(int i=0; i<26; i++) {
+	for(int i=0; i<26; i++) 
+	{
 		cout<<char(i+65)<<" - "<<t[i]<<" | ";
 		wy<<char(i+65)<<" - "<<t[i]<<" | ";
 	}
 	cout<<"\n";
 	wy<<"\n";
 	
-	for (int i=0; i<26; i++) {
+	for (int i=0; i<26; i++) 
+	{
 		suma += t[i]*(t[i]-1);
 		n += t[i];
 	}
@@ -95,10 +104,12 @@ void Zadanie77::zadanie3() {
 	wy<<"Dokladna dlugosc klucza: "<<klucz.length();
 }
 
-wynik Zadanie77::szyfrowanie(string haslo, string szyfr) {
+wynik Zadanie77::szyfrowanie(string haslo, string szyfr) 
+{
 	int j = 0;
 	for(int i=0; i<haslo.length(); i++) {
-		if(haslo[i]!=' ' && haslo[i]!=',' && haslo[i]!='.') {
+		if(haslo[i]!=' ' && haslo[i]!=',' && haslo[i]!='.') 
+		{
 			int ilosc = int(szyfr[j%szyfr.length()])-65;
 			haslo[i] = char((int(haslo[i])-65 + ilosc)%26+65);
 			j++;
@@ -116,13 +127,17 @@ wynik Zadanie77::szyfrowanie(string haslo, string szyfr) {
 	return wynik1;
 }
 
-string Zadanie77::rozszyfrowanie(string haslo, string szyfr) {
+string Zadanie77::rozszyfrowanie(string haslo, string szyfr) 
+{
 	int j = 0;
-	for(int i=0; i<haslo.length(); i++) {
-		if(haslo[i]!=' ' && haslo[i]!=',' && haslo[i]!='.') {
+	for(int i=0; i<haslo.length(); i++) 
+	{
+		if(haslo[i]!=' ' && haslo[i]!=',' && haslo[i]!='.') 
+		{
 			int ilosc = int(szyfr[j%szyfr.length()])-65;
 			ilosc = int(haslo[i])-65-ilosc;
-			if(ilosc<0) {
+			if(ilosc<0) 
+			{
 				haslo[i] = char(26+ilosc+65);
 			} else {
 				haslo[i] = char(ilosc+65);
@@ -133,13 +148,15 @@ string Zadanie77::rozszyfrowanie(string haslo, string szyfr) {
 	return haslo;
 }
 
-Zadanie77::~Zadanie77() {
+Zadanie77::~Zadanie77() 
+{
 	we1.close();
 	we2.close();
 	wy.close();
 }
 
-int main() {
+int main() 
+{
 	Zadanie77 z77;
 	z77.zadanie1();
 	z77.zadanie2();
